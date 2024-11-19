@@ -1,33 +1,22 @@
 import { getParkData, parkInfoLinks } from "./parkService.mjs";
 import setHeaderFooter from "./setHeaderFooter.mjs";
-import { parkInfoTemplate, parkIntroTemplate, mediaCardTemplate } from "./templates.mjs";
+import { mediaCardTemplate } from "./templates.mjs";
+const parkData = getParkData();
 
-document.addEventListener("DOMContentLoaded", function() {
-    const parkData = getParkData();
+function setParkIntro(data) {
+  const introEl = document.querySelector(".intro");
+  introEl.innerHTML = `<h1>${parkData.fullName}</h1>
+  <p>${parkData.description}</p>`;
+}
 
-    const disclaimer = document.querySelector(".disclaimer a");
-    disclaimer.href = parkData.url;
-    disclaimer.innerHTML = parkData.fullName;
+function setParkInfoLinks(data) {
+  const infoEl = document.querySelector(".info");
+  // we have multiple links to build...so we map to transform the array of objects into an array of HTML strings.
+  const html = data.map(mediaCardTemplate);
+  // join the array of strings into one string and insert it into the section
+  infoEl.insertAdjacentHTML("afterbegin", html.join(""));
+}
 
-    document.title = parkData.fullName;
-
-    const heroImage = document.querySelector(".hero-image");
-    heroImage.src = parkData.images[0].url;
-
-    function setParkIntro(data) {
-      document.querySelector(".intro").innerHTML = parkIntroTemplate(data);
-    }
-
-    function setParkInfo() {
-      document.querySelector(".info").innerHTML = parkInfoLinks.map(mediaCardTemplate).join("");
-    }
-
-    function initializeParkPage(data) {
-      document.querySelector(".hero-banner__content").innerHTML = parkInfoTemplate(data);
-      setParkIntro(data);
-      setParkInfo();
-      setHeaderFooter(data);
-    }
-
-    initializeParkPage(parkData);
-});
+setHeaderFooter(parkData);
+setParkIntro(parkData);
+setParkInfoLinks(parkInfoLinks);
