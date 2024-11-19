@@ -84,8 +84,14 @@
   --bs-link-hover-color: #003e6b;
   --bs-code-color: #d63384;
   --bs-highlight-bg: #fff3cd;
+  --alert-closure: #cb2027;
+  --alert-caution: #ed7e31;
+  --alert-information: #2451a9;
+  --alert-danger: #720f04;
 }
-/* -------------------------------------------------------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------------------------------------------------------- */
+
 * {
   box-sizing: border-box;
 }
@@ -106,6 +112,7 @@ a:hover {
   color: var(--bs-link-hover-color);
 }
 
+
 .skip-links ul {
   list-style-type: none;
   margin: 0;
@@ -124,6 +131,7 @@ a:hover {
   z-index: 9999;
 }
 
+
 .site-title {
   display: flex;
   align-items: center;
@@ -132,7 +140,6 @@ a:hover {
   font-size: 1rem;
   margin-left: 0.3em;
 }
-
 .logo {
   height: 0;
   width: 0;
@@ -143,14 +150,15 @@ a:hover {
   border-right: 13px solid transparent;
 }
 
+
 .global-header {
   background-color: var(--bs-black);
   color: white;
   display: flex;
   justify-content: space-between;
+  /* padding: 0.3em 1rem; */
   fill: white;
 }
-
 .global-header a:link,
 .global-header a:visited,
 #park-header a:link,
@@ -162,7 +170,6 @@ a:hover {
   width: 20px;
   height: 20px;
 }
-
 .global-header__right {
   display: flex;
   align-items: center;
@@ -183,6 +190,7 @@ a:hover {
   text-transform: uppercase;
   border-left: 1px solid var(--bs-grey-5);
 }
+
 
 .hero-banner {
   display: grid;
@@ -214,6 +222,7 @@ a:hover {
   font-size: 0.8rem;
 }
 
+
 .park-nav > ul {
   list-style: none;
   padding-left: 0;
@@ -238,10 +247,12 @@ a:hover {
   height: 24px;
 }
 
+
 .intro {
   padding: 1em;
 }
-.intro > h1 {
+.intro > h1,
+main > h1 {
   font-family: var(--bs-font-serif);
   font-size: 2em;
   font-weight: normal;
@@ -304,6 +315,47 @@ a:hover {
   margin: 0.5rem 0;
 }
 
+
+main {
+  padding: 1rem;
+}
+
+
+.alerts > ul {
+  list-style: none;
+  padding: 0;
+}
+.alert {
+  margin: 0.5rem;
+  padding: 0.5rem 0 0.8rem 0;
+  display: flex;
+  gap: 1em;
+  border-bottom: 1px solid var(--bs-grey-3);
+}
+.alert h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+.alert p {
+  margin: 0;
+}
+.alert svg {
+  height: 30px;
+  width: 30px;
+  margin: 0.25em;
+  flex: 0 0 auto;
+}
+
+
+.visitor > details > ul {
+  list-style: none;
+  padding: 0;
+}
+.visitor > details li {
+  border-bottom: 1px solid var(--bs-grey-3);
+}
+
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -318,4 +370,21 @@ a:hover {
 }
 .disclaimer {
   padding: 0 1em;
+}
+.alert-information {
+  color: var(--alert-information);
+}
+.alert-danger {
+  color: var(--alert-danger);
+}
+.alert-closure {
+  color: var(--alert-closure);
+}
+.alert-caution {
+  color: var(--alert-caution);
+}
+details {
+  padding: 1rem;
+  border: 1px solid var(--bs-grey-3);
+  border-radius: 5px;
 }
