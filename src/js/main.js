@@ -10,6 +10,9 @@ function setParkIntro(data) {
 
 function setParkInfoLinks(data) {
   const infoEl = document.querySelector(".info");
+  // we have multiple links to build...so we map to transform the array of objects into an array of HTML strings.
+  const html = data.map(mediaCardTemplate);
+  // join the array of strings into one string and insert it into the section
   infoEl.insertAdjacentHTML("afterbegin", html.join(""));
 }
 
