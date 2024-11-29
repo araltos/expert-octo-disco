@@ -1,4 +1,3 @@
-
 import spritePath from "../images/sprite.symbol.svg";
 
 export function parkInfoTemplate(info) {
