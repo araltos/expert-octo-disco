@@ -88,6 +88,7 @@
   --alert-caution: #ed7e31;
   --alert-information: #2451a9;
   --alert-danger: #720f04;
+  --icon-color: black;
 }
 
 /* Global styles */
@@ -162,7 +163,8 @@ a:hover {
 .global-header {
   background-color: var(--bs-black);
   color: white;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 200px;
   justify-content: space-between;
   /* padding: 0.3em 1rem; */
   fill: white;
@@ -183,6 +185,7 @@ a:hover {
 .global-header__right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
 }
 .global-header__right .search-icon {
   padding: 0 1rem;
@@ -193,12 +196,56 @@ a:hover {
   border: none;
   color: white;
   font-size: 1rem;
-
+  cursor: pointer;
   padding: 1.2em;
   display: flex;
   align-items: center;
   text-transform: uppercase;
   border-left: 1px solid var(--bs-grey-5);
+}
+
+/* Global nav styles */
+
+.global-nav {
+  width: 100%;
+  grid-column: 1/3;
+  border-top: 1px solid #333;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.global-nav button {
+  background-color: transparent;
+  border: 0;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.global-nav svg {
+  --icon-color: white;
+}
+
+/* styles to control opening and closing of menus */
+
+.global-nav__toggle--closed {
+  display: flex;
+  align-items: center;
+}
+.global-nav__toggle--open {
+  display: none;
+  align-items: center;
+}
+
+.global-nav__toggle[aria-expanded="true"] > .global-nav__toggle--closed {
+  display: none;
+}
+.global-nav__toggle[aria-expanded="true"] > .global-nav__toggle--open {
+  display: flex;
+}
+
+.global-nav.show {
+  max-height: 1000px;
 }
 
 /* Park header */
@@ -420,6 +467,14 @@ main {
 }
 .alert-caution {
   color: var(--alert-caution);
+}
+
+.hide {
+  display: none;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
 
 details {
